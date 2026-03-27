@@ -9,12 +9,14 @@ import Testimonials from './components/sections/Testimonials.jsx';
 import Contact from './components/sections/Contact.jsx';
 import Footer from './components/sections/Footer.jsx';
 
-import { useScroll } from 'framer-motion';
+import { useScroll, AnimatePresence } from 'framer-motion';
+import LoadingScreen from './components/ui/LoadingScreen.jsx';
 
 // Lazy load 3D Scene
 const Scene3D = lazy(() => import('./components/background/Scene3D.jsx'));
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
   const { scrollYProgress } = useScroll();
   useEffect(() => {
     // Initialize Locomotive Scroll v5
@@ -45,6 +47,10 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <AnimatePresence mode="wait">
+        {loading && <LoadingScreen key="loader" onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
       {/* Noise Overlay */}
       <div className="noise" />
       

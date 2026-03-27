@@ -3,7 +3,7 @@ import { USER_INFO } from '../../constants';
 
 const Footer = () => {
   return (
-    <footer className="py-16 bg-white border-t border-slate-100">
+    <footer className="py-16 bg-white border-t border-slate-100 relative z-10">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
